@@ -1,12 +1,14 @@
 
 # Sokoban (PyGame)
 
-This project showcases a Sokoban game using PyGame.
+This project showcases a [Sokoban game][sokoban-link] game using PyGame.
 
 The goal of this project is not so much to implement a Sokoban game in Python, 
 but to explore ideas and techniques for **"codebase onboarding"**. That is: to make the codebase as approachable as possible for an hypothetical member of an hypothetical development team.
 
 See ["Ideas Explored"](#ideas-explored) section below for more details.
+
+[sokoban-link]: https://en.wikipedia.org/wiki/Sokoban
 
 ## Assumed Knowledge
 
