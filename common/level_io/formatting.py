@@ -20,9 +20,9 @@ def format_level(level: Level) -> List[str]:
   for wall_pos in level.walls:
     lines[wall_pos.row][wall_pos.col] = '#'
   lines[level.worker.pos.row][level.worker.pos.col] = '@'
-  # Now transform each line into a string
+  # Now join char-array into a line (string)
   for i in range(0, len(lines)):
-    lines[i] = ''.join(lines[i])
+    lines[i] = ''.join(lines[i]).rstrip()
   # And finally join all lines
   lines = '\n'.join(lines)
   return lines
