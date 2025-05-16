@@ -18,7 +18,7 @@ class Level:
 
   def add_wall(self, pos: Pos):
     self.walls.append(pos)
-    self._update_counts(pos)
+    self._update_dimensions(pos)
 
   def add_worker(self, pos: Pos):
     from game_logic.worker import Worker
@@ -31,6 +31,6 @@ class Level:
     return any(wall_pos == pos 
                for wall_pos in self.walls)
 
-  def _update_counts(self, pos: Pos):
+  def _update_dimensions(self, pos: Pos):
     self.col_count = max(self.col_count, pos.col + 1)
     self.row_count = max(self.row_count, pos.row + 1)
