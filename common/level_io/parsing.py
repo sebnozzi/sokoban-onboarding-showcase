@@ -16,5 +16,5 @@ def parse_level(level_block: str) -> Level:
       if char == '#':
           level.add_wall(pos)
       elif char == '@':
-          level.place_worker(pos)
+          level.add_worker(pos)
   return level

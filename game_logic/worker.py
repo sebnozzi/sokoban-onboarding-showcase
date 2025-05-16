@@ -11,12 +11,9 @@ class Worker:
   Can move inside a level and push boxes.
   """
 
-  def __init__(self, level: Level):
-    self.pos = Pos(0, 0)
+  def __init__(self, level: Level, initial_pos: Pos):
+    self.pos = initial_pos
     self.level = level
-
-  def set_position(self, pos: Pos):
-    self.pos = pos
 
   def move(self, direction: Direction):
     """
@@ -30,4 +27,4 @@ class Worker:
     level: Level = self.level
     new_position = self.pos.neighbour_at(direction)
     if level.has_free_space_at(new_position):
-      self.set_position(new_position)
+      self.pos = new_position

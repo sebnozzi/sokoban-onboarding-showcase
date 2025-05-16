@@ -12,7 +12,7 @@ class Level:
   def __init__(self):
     from game_logic.worker import Worker
     self.walls: List[Pos] = []
-    self.worker: Worker = Worker(level=self)
+    self.worker: Worker = None
     self.row_count = 0
     self.col_count = 0
 
@@ -20,8 +20,9 @@ class Level:
     self.walls.append(pos)
     self._update_counts(pos)
 
-  def place_worker(self, pos: Pos):
-    self.worker.set_position(pos)
+  def add_worker(self, pos: Pos):
+    from game_logic.worker import Worker
+    self.worker = Worker(level=self, initial_pos=pos)
 
   def has_free_space_at(self, pos: Pos) -> bool:
     return not self.has_wall_at(pos)
