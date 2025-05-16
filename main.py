@@ -1,6 +1,12 @@
 from game_logic.level import Level
 from common.level_io.parsing import parse_level
-from game_logic.game import Game
+from game_logic.game import (
+  Game,
+  UP_ARROW_KEY,
+  DOWN_ARROW_KEY,
+  LEFT_ARROW_KEY,
+  RIGHT_ARROW_KEY,
+)
 from pygame_specific.rendering import render_level
 
 import pygame
@@ -61,13 +67,13 @@ def process_events(game: Game) -> bool:
       return False
     elif event.type == pygame.KEYDOWN:
       if event.key == pygame.K_RIGHT:
-        game.process_key("right-arrow")
+        game.process_key(RIGHT_ARROW_KEY)
       if event.key == pygame.K_LEFT:
-        game.process_key("left-arrow")
+        game.process_key(LEFT_ARROW_KEY)
       if event.key == pygame.K_DOWN:
-        game.process_key("down-arrow")
+        game.process_key(DOWN_ARROW_KEY)
       if event.key == pygame.K_UP:
-        game.process_key("up-arrow")
+        game.process_key(UP_ARROW_KEY)
   return True
 
 

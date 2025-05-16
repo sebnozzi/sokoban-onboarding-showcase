@@ -1,5 +1,11 @@
-from common.models.direction import LEFT, RIGHT, UP, DOWN
+from common.models import direction
 from game_logic.level import Level
+
+# == Arrow-key constants
+RIGHT_ARROW_KEY = "right-arrow"
+LEFT_ARROW_KEY  = "left-arrow"
+UP_ARROW_KEY    = "up-arrow"
+DOWN_ARROW_KEY  = "down-arrow"
 
 
 class Game:
@@ -19,12 +25,12 @@ class Game:
 
   def process_key(self, key_name: str):
     worker = self.level.worker
-    if key_name == "right-arrow":
-      worker.move(RIGHT)
-    elif key_name == "left-arrow":
-      worker.move(LEFT)
-    elif key_name == "up-arrow":
-      worker.move(UP)
-    elif key_name == "down-arrow":
-      worker.move(DOWN)
+    if key_name == RIGHT_ARROW_KEY:
+      worker.move(direction.RIGHT)
+    elif key_name == LEFT_ARROW_KEY:
+      worker.move(direction.LEFT)
+    elif key_name == UP_ARROW_KEY:
+      worker.move(direction.UP)
+    elif key_name == DOWN_ARROW_KEY:
+      worker.move(direction.DOWN)
     
