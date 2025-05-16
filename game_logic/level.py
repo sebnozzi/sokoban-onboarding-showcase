@@ -28,10 +28,8 @@ class Level:
     return not self.has_wall_at(pos)
 
   def has_wall_at(self, pos: Pos) -> bool:
-    for wall in self.walls:
-      if wall == pos:
-        return True
-    return False
+    return any(wall_pos == pos 
+               for wall_pos in self.walls)
 
   def _update_counts(self, pos: Pos):
     self.col_count = max(self.col_count, pos.col + 1)
