@@ -86,13 +86,17 @@ Ideas and techniques explored for "codebase onboarding" are:
 * Explaining the project structure, providing further starting points
   * Linking to files / folders from Markdown, to leverage navigation features
 * Not over-documenting, keeping documentation short and to the point
-  * Use existing guides if possible
+  * Encourage reading and getting out of the way
+  * Use existing guides if possible (delegate / stay up-to-date)
+* Mention assumed / required knowledge
 * Separating code into meaningul modules
   * Separating model from implementation
 * Documenting classes at least at the class-level
 * Write long-lived comments
   * Don't write docstrings that are too specific and can become outdated
 * Implementing tests/features in quasi-english (using Cucumber)
+* De-coupling tests from implementation
+  * So that re-designs are encouraged and tests don't become liabilities
 * Using good abstractions where it makes sense
 * Keeping functions / methods short and focused
 
