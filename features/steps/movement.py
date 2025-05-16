@@ -2,8 +2,8 @@ from behave import *
 from assertpy import assert_that
 from common.level_io.formatting import format_level
 from common.level_io.parsing import parse_level
-from game_logic.game import (
-  Game, 
+from game_logic.game_controller import (
+  GameController, 
   LEFT_ARROW_KEY,
   DOWN_ARROW_KEY,
   RIGHT_ARROW_KEY,
@@ -13,7 +13,7 @@ from game_logic.game import (
 @given(u'the game is showing this level')
 def step_impl(context):
   level = parse_level(context.text)
-  game = Game()
+  game = GameController()
   game.set_level(level=level)
   context.game = game
 
@@ -27,13 +27,13 @@ def step_impl(context, test_key_name):
     "right-arrow": RIGHT_ARROW_KEY,
   }
   game_key_name = key_map[test_key_name]
-  game: Game = context.game
+  game: GameController = context.game
   game.process_key(key_name=game_key_name)
 
 
 @then(u'the level should look like this')
 def step_impl(context):
-  game: Game = context.game
+  game: GameController = context.game
   actual_level = game.level
   actual_level_repr = format_level(actual_level)
   expected_level_repr = context.text

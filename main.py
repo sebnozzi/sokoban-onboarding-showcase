@@ -1,14 +1,13 @@
 from game_logic.level import Level
 from common.level_io.parsing import parse_level
-from game_logic.game import (
-  Game,
+from game_logic.game_controller import (
+  GameController,
   UP_ARROW_KEY,
   DOWN_ARROW_KEY,
   LEFT_ARROW_KEY,
   RIGHT_ARROW_KEY,
 )
 from pygame_specific.rendering import render_level
-
 import pygame
 
 
@@ -33,12 +32,12 @@ QUIT_KEYS=[pygame.K_ESCAPE, pygame.K_q]
 
 def main():
   level = parse_level(LEVEL_DATA)
-  game = Game()
+  game = GameController()
   game.set_level(level=level)
   play_game(game)
 
 
-def play_game(game: Game):
+def play_game(game: GameController):
   pygame.init()
   screen = pygame.display.set_mode(SCREEN_RESOLUTION)
   # Disable key-repeats
@@ -46,7 +45,7 @@ def play_game(game: Game):
   run_game_loop(screen, game)
 
 
-def run_game_loop(screen: pygame.Surface, game: Game):
+def run_game_loop(screen: pygame.Surface, game: GameController):
   clock = pygame.time.Clock()
   running = True
   while running:
@@ -56,7 +55,7 @@ def run_game_loop(screen: pygame.Surface, game: Game):
   pygame.quit()
 
 
-def process_events(game: Game) -> bool:
+def process_events(game: GameController) -> bool:
   """
   Processes events, advancing game if necessary.
   
@@ -84,7 +83,7 @@ def should_quit(event) -> bool:
     event.type == pygame.KEYDOWN and event.key in QUIT_KEYS)
 
 
-def render(screen: pygame.Surface, game: Game):
+def render(screen: pygame.Surface, game: GameController):
   screen.fill("black")
   render_level(screen, game.level)
   pygame.display.flip()

@@ -8,7 +8,7 @@ UP_ARROW_KEY    = "up-arrow"
 DOWN_ARROW_KEY  = "down-arrow"
 
 
-class Game:
+class GameController:
   """
   Game controller
 
