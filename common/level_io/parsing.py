@@ -14,7 +14,9 @@ def parse_level(level_block: str) -> Level:
     for col_nr, char in enumerate(line):
       pos = Pos(col=col_nr, row=row_nr)
       if char == '#':
-          level.add_wall(pos)
+        level.add_wall(pos)
+      elif char == '$':
+        level.add_unplaced_box(pos)
       elif char == '@':
-          level.add_worker(pos)
+        level.add_worker(pos)
   return level

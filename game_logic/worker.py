@@ -25,6 +25,10 @@ class Worker:
     Otherwise the worker stays where it is.
     """
     level: Level = self.level
-    new_position = self.pos.neighbour_at(direction)
-    if level.has_free_space_at(new_position):
-      self.pos = new_position
+    target_pos = self.pos.neighbour_at(direction)
+    # Try to push box if on target-position
+    if level.has_pushable_box_at(target_pos, direction):
+      level.perform_box_push(target_pos, direction)
+    # At this point the target-position is either free or (still) occupied
+    if level.has_free_space_at(target_pos):
+      self.pos = target_pos

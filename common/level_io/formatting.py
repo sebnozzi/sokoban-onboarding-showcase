@@ -16,9 +16,11 @@ def format_level(level: Level) -> List[str]:
     for _ in range(0, level.col_count):
       row_chars.append(' ')
     lines.append(row_chars)
-  # Now place the wall, worker chars
+  # Now place the wall, boxes and worker chars
   for wall_pos in level.walls:
     lines[wall_pos.row][wall_pos.col] = '#'
+  for box_pos in level.boxes:
+    lines[box_pos.row][box_pos.col] = '$'
   lines[level.worker.pos.row][level.worker.pos.col] = '@'
   # Now join char-array into a line (string)
   for i in range(0, len(lines)):

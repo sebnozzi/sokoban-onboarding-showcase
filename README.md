@@ -104,9 +104,6 @@ Ideas and techniques explored for "codebase onboarding" are:
 
 ## PENDING FEATURES
 
-- Pushing box into a free space
-- Not being able to push a box into a wall
-- Not being able to push a box into another box
 - Placing a box
 - Unplacing a box
 - Solving the level by placing all boxes

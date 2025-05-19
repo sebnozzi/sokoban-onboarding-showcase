@@ -6,10 +6,12 @@ from game_logic.worker import Worker
 CELL_SIZE = 40
 WALL_COLOR = "red"
 WORKER_COLOR = "blue"
+BOX_COLOR = "darkGreen"
 
 
 def render_level(screen: Surface, level: Level):
   _render_walls(screen, level)
+  _render_boxes(screen, level)
   _render_worker(screen, level.worker)
 
 
@@ -17,6 +19,12 @@ def _render_walls(screen, level):
     for wall_pos in level.walls:
       wall_pos: Pos
       _render_cell(screen, wall_pos, WALL_COLOR)
+
+
+def _render_boxes(screen, level):
+    for box_pos in level.boxes:
+      box_pos: Pos
+      _render_cell(screen, box_pos, BOX_COLOR)
 
 
 def _render_worker(screen, worker: Worker):
