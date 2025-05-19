@@ -7,7 +7,7 @@ class Level:
   """
   Model of a Sokoban level
   
-  Contains level entities like walls and the worker.
+  Contains level entities like walls, boxes and the worker.
   """
 
   def __init__(self):
