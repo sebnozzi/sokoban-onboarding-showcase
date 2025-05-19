@@ -27,8 +27,10 @@ class Worker:
     level: Level = self.level
     target_pos = self.pos.neighbour_at(direction)
     # Try to push box if on target-position
-    if level.has_pushable_box_at(target_pos, direction):
-      level.perform_box_push(target_pos, direction)
+    maybe_box = level.try_getting_box_at(target_pos)
+    if maybe_box:
+      maybe_box.try_performing_push_in(direction)
     # At this point the target-position is either free or (still) occupied
+    # (if a box-push was attempted it either succeeded or failed)
     if level.has_free_space_at(target_pos):
       self.pos = target_pos

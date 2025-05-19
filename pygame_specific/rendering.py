@@ -22,9 +22,9 @@ def _render_walls(screen, level):
 
 
 def _render_boxes(screen, level):
-    for box_pos in level.boxes:
-      box_pos: Pos
-      _render_cell(screen, box_pos, BOX_COLOR)
+    for box in level.boxes:
+      box_pos: Pos = box.pos
+      _render_cell(screen, box_pos, UNPLACED_BOX_COLOR)
 
 
 def _render_worker(screen, worker: Worker):
