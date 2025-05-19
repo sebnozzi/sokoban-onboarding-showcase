@@ -16,6 +16,7 @@ def step_impl(context):
   game = GameController()
   game.set_level(level=level)
   context.game = game
+  context.initial_level_repr = context.text 
 
 
 @when(u'I press the "{test_key_name}" key')
@@ -31,11 +32,21 @@ def step_impl(context, test_key_name):
   game.process_key(key_name=game_key_name)
 
 
-@then(u'the level should look like this')
+@then(u'the level should now look like this')
 def step_impl(context):
   game: GameController = context.game
   actual_level = game.level
   actual_level_repr = format_level(actual_level)
   expected_level_repr = context.text
+  # Prepend '\n' so that the assertion is easier to read in case of error
+  assert_that('\n' + actual_level_repr).described_as("level state").is_equal_to('\n' + expected_level_repr)
+
+
+@then(u'the level should still look the same')
+def step_impl(context):
+  game: GameController = context.game
+  actual_level = game.level
+  actual_level_repr = format_level(actual_level)
+  expected_level_repr = context.initial_level_repr
   # Prepend '\n' so that the assertion is easier to read in case of error
   assert_that('\n' + actual_level_repr).described_as("level state").is_equal_to('\n' + expected_level_repr)

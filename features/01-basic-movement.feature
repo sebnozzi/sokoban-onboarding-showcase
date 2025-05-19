@@ -14,7 +14,7 @@ Feature: Basic Movement
     #####
     """
     When I press the "right-arrow" key
-    Then the level should look like this:
+    Then the level should now look like this:
     """
     #####
     #   #
@@ -33,7 +33,7 @@ Feature: Basic Movement
     #####
     """
     When I press the "left-arrow" key
-    Then the level should look like this:
+    Then the level should now look like this:
     """
     #####
     #   #
@@ -52,7 +52,7 @@ Feature: Basic Movement
     #####
     """
     When I press the "down-arrow" key
-    Then the level should look like this:
+    Then the level should now look like this:
     """
     #####
     #   #
@@ -71,7 +71,7 @@ Feature: Basic Movement
     #####
     """
     When I press the "up-arrow" key
-    Then the level should look like this:
+    Then the level should now look like this:
     """
     #####
     # @ #

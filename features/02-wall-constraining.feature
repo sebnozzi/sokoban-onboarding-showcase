@@ -18,14 +18,7 @@ Feature: Wall Constraining
     #####
     """
     When I press the "right-arrow" key
-    Then the level should look like this:
-    """
-    #####
-    #   #
-    #  @#
-    #   #
-    #####
-    """
+    Then the level should still look the same
 
   Scenario: Worker cannot get past a wall moving left
     Given the game is showing this level:
@@ -37,14 +30,8 @@ Feature: Wall Constraining
     #####
     """
     When I press the "left-arrow" key
-    Then the level should look like this:
-    """
-    #####
-    #   #
-    #@  #
-    #   #
-    #####
-      """
+    Then the level should still look the same
+
 
   Scenario: Worker cannot get past a wall moving down
     Given the game is showing this level:
@@ -56,14 +43,8 @@ Feature: Wall Constraining
     #####
     """
     When I press the "down-arrow" key
-    Then the level should look like this:
-    """
-    #####
-    #   #
-    #   #
-    # @ #
-    #####
-    """
+    Then the level should still look the same
+
 
   Scenario: Worker cannot get past a wall moving up
     Given the game is showing this level:
@@ -75,11 +56,5 @@ Feature: Wall Constraining
     #####
     """
     When I press the "up-arrow" key
-    Then the level should look like this:
-    """
-    #####
-    # @ #
-    #   #
-    #   #
-    #####
-    """
+    Then the level should still look the same
+

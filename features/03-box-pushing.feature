@@ -17,7 +17,7 @@ Feature: Basic Box pushing
     #####
     """
     When I press the "right-arrow" key
-    Then the level should look like this:
+    Then the level should now look like this:
     """
     #####
     #   #
@@ -36,14 +36,8 @@ Feature: Basic Box pushing
     #####
     """
     When I press the "left-arrow" key
-    Then the level should look like this:
-    """
-    #####
-    #   #
-    #$@ #
-    #   #
-    #####
-    """
+    Then the level should still look the same
+
 
   Scenario: A box cannot push another box
     Given the game is showing this level:
@@ -55,11 +49,4 @@ Feature: Basic Box pushing
     #######
     """
     When I press the "right-arrow" key
-    Then the level should look like this:
-    """
-    #######
-    #     #
-    # @$$ #
-    #     #
-    #######
-    """
+    Then the level should still look the same
