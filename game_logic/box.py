@@ -14,6 +14,10 @@ class Box:
     self.pos = initial_pos
     self.level = level
 
+  @property
+  def is_placed(self) -> bool:
+    return self.level.has_goal_at(self.pos)
+
   def try_performing_push_in(self, direction: Direction):
     target_pos = self.pos.neighbour_at(direction)
     if self.level.has_free_space_at(target_pos):

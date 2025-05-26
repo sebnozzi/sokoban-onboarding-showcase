@@ -14,6 +14,7 @@ class Level:
     from game_logic.worker import Worker
     from game_logic.box import Box
     self.walls: List[Pos] = []
+    self.goals: List[Pos] = []
     self.boxes: List[Box] = []
     self.worker: Worker = None
     self.row_count = 0
@@ -23,7 +24,10 @@ class Level:
     self.walls.append(pos)
     self._update_dimensions(pos)
 
-  def add_unplaced_box(self, pos: Pos):
+  def add_goal_position(self, pos: Pos):
+    self.goals.append(pos)
+
+  def add_box(self, pos: Pos):
     from game_logic.box import Box
     box = Box(level=self, initial_pos=pos)
     self.boxes.append(box)
@@ -40,11 +44,15 @@ class Level:
     return any(wall_pos == pos 
                for wall_pos in self.walls)
   
+  def has_goal_at(self, pos: Pos) -> bool:
+     return any(goal_pos == pos 
+               for goal_pos in self.goals)
+   
   def has_box_at(self, pos: Pos) -> bool:
     return any(box.pos == pos 
                for box in self.boxes)
   
-  def try_getting_box_at(self, pos: Pos) -> Optional["Box"]:
+  def try_getting_box_at(self, pos: Pos) -> Optional["Box"]: # type: ignore
     for box in self.boxes:
       if box.pos == pos:
         return box
