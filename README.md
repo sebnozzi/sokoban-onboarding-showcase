@@ -15,7 +15,7 @@ See ["Ideas Explored"](#ideas-explored) section below for more details.
 This project makes use of the following libraries / tools:
 
 * [PyGame](https://www.pygame.org) - for implementing the game
-* [Behave](https://behave.readthedocs.io) - for testing
+* [PyTest](https://pytest.org) - for testing
 * [AssertPy](https://assertpy.github.io) - for test assertions
 
 It is recommended that the developer becomes familiar with these technologies (in order to better understand and contribute to the codebase).
@@ -27,15 +27,14 @@ Important files and folders:
 - [main.py](main.py) - This is the entry-point for the PyGame implementation
 - [game_logic/](./game_logic/) - The model / game-logic is implemented here (see [game.py](./game_logic/game.py) and [level.py](./game_logic/level.py))
 
+  - [tests/](./tests/) - The test-files which cover the game-logic
+
 - [common/](./common/) - Common classes and models for the whole program
 
     - [level_io/](./common/level_io/) - Level formatting / parsing
     - [models/](./common/models/) - Common models like `Pos(ition)` or `Direction`
 
 - [pygame_specific/](./pygame_specific/) - PyGame-specific aspects go here (e.g. rendering)
-- [features/](./features/) - The [behave](https://behave.readthedocs.io) tests are _defined_ here (in "*.feature" files)
-
-    - [steps/](./features/steps/) - The test "steps" are _implemented_ here
 
 - [requirements.txt](requirements.txt) - Lists the required packages (see [Setup](#setup) below)
 
@@ -67,15 +66,7 @@ This should open a window, in which you can move the worker using the arrow keys
 Run the tests using:
 
 ```
-behave
-```
-
-This usually uses colors in the console. Eventual print-debugging statements are not shown.
-
-If you want to see debugging (print) statements run with:
-
-```
-behave --no-capture --no-color
+python -m pytest
 ```
 
 ---
@@ -96,7 +87,16 @@ Ideas and techniques explored for "codebase onboarding" are:
 * Documenting classes at least at the class-level
 * Write long-lived comments
   * Don't write docstrings that are too specific and can become outdated
-* Implementing tests/features in quasi-english (using Cucumber)
+* Evaluating and discarding cucumber in favor to equally readable but more
+  explorable in-code test files (using PyTest)
+* Writing de-coupled, succint tests
+  * Have short tests in general
+  * Have readable tests
+  * Only include what is relevant in the test
+  * Structure a test in GIVEN / WHEN / THEN sections
+  * Use custom setup / assertion helpers
+  * Listing features numerically
+  * Inherit from cucumber: describe feature on top of tile
 * De-coupling tests from implementation
   * So that re-designs are encouraged and tests don't become liabilities
 * Using good abstractions where it makes sense

@@ -24,11 +24,13 @@ class Worker:
 
     Otherwise the worker stays where it is.
     """
+    from game_logic.box import Box
     level: Level = self.level
     target_pos = self.pos.neighbour_at(direction)
     # Try to push box if on target-position
-    maybe_box = level.try_getting_box_at(target_pos)
+    maybe_box: Box | None = level.try_getting_box_at(target_pos)
     if maybe_box:
+      maybe_box: Box
       maybe_box.try_performing_push_in(direction)
     # At this point the target-position is either free or (still) occupied
     # (if a box-push was attempted it either succeeded or failed)

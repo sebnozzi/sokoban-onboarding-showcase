@@ -33,4 +33,6 @@ class GameController:
       worker.move(direction.UP)
     elif key_name == DOWN_ARROW_KEY:
       worker.move(direction.DOWN)
+    else:
+      raise f"Unrecognized key-name: {key_name}"
     

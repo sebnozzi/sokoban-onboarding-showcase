@@ -17,6 +17,8 @@ def parse_level(level_block: str) -> Level:
         level.add_wall(pos)
       elif char == '$':
         level.add_box(pos)
+      elif char == '*':
+        level.add_box(pos, placed=True)
       elif char == '.':
         level.add_goal_position(pos)
       elif char == '@':

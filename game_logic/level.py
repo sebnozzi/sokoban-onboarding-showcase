@@ -27,10 +27,12 @@ class Level:
   def add_goal_position(self, pos: Pos):
     self.goals.append(pos)
 
-  def add_box(self, pos: Pos):
+  def add_box(self, pos: Pos, placed:bool=False):
     from game_logic.box import Box
     box = Box(level=self, initial_pos=pos)
     self.boxes.append(box)
+    if placed:
+      self.add_goal_position(pos)
 
   def add_worker(self, pos: Pos):
     from game_logic.worker import Worker
