@@ -1,3 +1,4 @@
+import pygame.freetype
 from game_logic.level import Level
 from common.level_io.parsing import parse_level
 from game_logic.game_controller import (
@@ -28,7 +29,7 @@ LEVEL_DATA = """
 FPS=30
 SCREEN_RESOLUTION=(800,600)
 QUIT_KEYS=[pygame.K_ESCAPE, pygame.K_q]
-
+GAME_FONT=None
 
 def main():
   level = parse_level(LEVEL_DATA)
@@ -39,6 +40,9 @@ def main():
 
 def play_game(game: GameController):
   pygame.init()
+  pygame.freetype.init()
+  global GAME_FONT
+  GAME_FONT = pygame.freetype.Font(None, 24)
   screen = pygame.display.set_mode(SCREEN_RESOLUTION)
   # Disable key-repeats
   pygame.key.set_repeat(0)
@@ -86,6 +90,9 @@ def should_quit(event) -> bool:
 def render(screen: pygame.Surface, game: GameController):
   screen.fill("black")
   render_level(screen, game.level)
+  if game.is_solved:
+    text_surface, _rect = GAME_FONT.render("SOLVED!", "white")
+    screen.blit(text_surface, (200, 250))
   pygame.display.flip()
 
 

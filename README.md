@@ -104,7 +104,6 @@ Ideas and techniques explored for "codebase onboarding" are:
 
 ## PENDING FEATURES
 
-- Solving the level by placing all boxes
 - Reset the level
 - Undo movement
 - Worker orientation (initial, when moving, when undo)

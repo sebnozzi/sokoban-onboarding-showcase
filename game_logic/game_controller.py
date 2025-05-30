@@ -35,4 +35,7 @@ class GameController:
       worker.move(direction.DOWN)
     else:
       raise f"Unrecognized key-name: {key_name}"
-    
+  
+  @property
+  def is_solved(self) -> bool:
+    return self.level.is_solved

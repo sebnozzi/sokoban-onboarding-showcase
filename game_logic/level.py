@@ -60,6 +60,11 @@ class Level:
         return box
     return None
   
+  @property
+  def is_solved(self) -> bool:
+    return all(box.is_placed
+               for box in self.boxes)
+  
   def _update_dimensions(self, pos: Pos):
     self.col_count = max(self.col_count, pos.col + 1)
     self.row_count = max(self.row_count, pos.row + 1)
